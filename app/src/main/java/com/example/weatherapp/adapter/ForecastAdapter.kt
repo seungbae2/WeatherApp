@@ -6,13 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.weatherapp.adapter.HeaderAdapter.Companion.diffUtil
 import com.example.weatherapp.databinding.ItemWeatherBinding
 import com.example.weatherapp.model.ForecastModel
-import com.example.weatherapp.model.LocationModel
 
 class ForecastAdapter() : ListAdapter<ForecastModel,ForecastAdapter.ForecastViewHolder>(diffUtil) {
-    //var forecastList = arrayListOf<ForecastModel>()
 
     override fun onBindViewHolder(holder: ForecastViewHolder, position: Int) {
         holder.bind(currentList[position])

@@ -83,14 +83,17 @@ class MainActivity : AppCompatActivity() {
 
                         if(it.city.name == "Seoul") {
                             locationList[0].list = it.list
-
+                            headerAdapter.notifyItemChanged(0)
                         } else if(it.city.name == "London") {
                             locationList[1].list = it.list
+                            headerAdapter.notifyItemChanged(1)
                         } else if(it.city.name == "Chicago") {
                             locationList[2].list = it.list
+                            headerAdapter.notifyItemChanged(2)
                         }
 
-                        headerAdapter.notifyDataSetChanged()
+
+                        //headerAdapter.notifyDataSetChanged()
 
                     }
                 }
