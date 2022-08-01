@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/coverImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/background_gray_stroke_radius_16"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/coverImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Date" />
+
+    <TextView
+        android:id="@+id/weatherTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ellipsize="end"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/maxTempTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/dateTextView"
+        app:layout_constraintTop_toBottomOf="@id/dateTextView"
+        tools:text="Weather" />
+
+    <TextView
+        android:id="@+id/maxTempTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ellipsize="end"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/minTempTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/weatherTextView"
+        app:layout_constraintTop_toBottomOf="@+id/weatherTextView"
+        tools:text="Max Temp"/>
+
+    <TextView
+        android:id="@+id/minTempTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ellipsize="end"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/maxTempTextView"
+        app:layout_constraintTop_toBottomOf="@+id/maxTempTextView"
+        tools:text="Min Temp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
