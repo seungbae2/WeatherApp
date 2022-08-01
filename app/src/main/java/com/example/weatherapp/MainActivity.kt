@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.weatherRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.weatherRecyclerView.adapter = headerAdapter
-        headerAdapter.locationList = locationList
+        headerAdapter.submitList(locationList)
     }
 
     private fun initRetrofit() {
@@ -81,11 +81,16 @@ class MainActivity : AppCompatActivity() {
                     response.body()?.let {
                         Log.d(TAG, it.toString())
 
-                        when(it.city.name) {
-                            "Seoul" -> headerAdapter.notifyItemChanged(0)
-                            "London" -> headerAdapter.notifyItemChanged(1)
-                            "Chicago" -> headerAdapter.notifyItemChanged(2)
+                        if(it.city.name == "Seoul") {
+                            locationList[0].list = it.list
+
+                        } else if(it.city.name == "London") {
+                            locationList[1].list = it.list
+                        } else if(it.city.name == "Chicago") {
+                            locationList[2].list = it.list
                         }
+
+                        headerAdapter.notifyDataSetChanged()
 
                     }
                 }

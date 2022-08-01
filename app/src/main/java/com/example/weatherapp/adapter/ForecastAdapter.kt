@@ -2,16 +2,20 @@ package com.example.weatherapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.weatherapp.adapter.HeaderAdapter.Companion.diffUtil
 import com.example.weatherapp.databinding.ItemWeatherBinding
 import com.example.weatherapp.model.ForecastModel
+import com.example.weatherapp.model.LocationModel
 
-class ForecastAdapter(private val forecastList: List<ForecastModel>) : RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder>() {
+class ForecastAdapter() : ListAdapter<ForecastModel,ForecastAdapter.ForecastViewHolder>(diffUtil) {
     //var forecastList = arrayListOf<ForecastModel>()
 
     override fun onBindViewHolder(holder: ForecastViewHolder, position: Int) {
-        holder.bind(forecastList[position])
+        holder.bind(currentList[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastViewHolder {
@@ -35,9 +39,18 @@ class ForecastAdapter(private val forecastList: List<ForecastModel>) : RecyclerV
                 .into(binding.coverImageView)
         }
     }
-    override fun getItemCount() = forecastList.size
+    override fun getItemCount() = currentList.size
 
-    override fun getItemId(position: Int): Long {
-        return super.getItemId(position)
+    companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<ForecastModel>() {
+            override fun areItemsTheSame(oldItem: ForecastModel, newItem: ForecastModel): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: ForecastModel, newItem: ForecastModel): Boolean {
+                return oldItem.dtTxt == newItem.dtTxt
+            }
+
+        }
     }
 }

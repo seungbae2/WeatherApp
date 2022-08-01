@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class LocationModel(
     @SerializedName("city") val city: CityModel,
-    @SerializedName("list") val list: List<ForecastModel>,
+    @SerializedName("list") var list: List<ForecastModel>,
 )
 
 data class CityModel(
